@@ -1,0 +1,1 @@
+{{Session::get('name')}} You are logged in!
