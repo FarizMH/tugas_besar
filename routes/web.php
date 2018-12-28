@@ -17,9 +17,9 @@ Route::get('/', function () {
 });
 
 Route::get('/profil', function () {
-    $data = \App\Item::all();
+    $data = \App\editProfil::all();
     
-    return view('profil_user',compact('data'));
+    return view('profil_user',compact('file'));
 });
 
 
@@ -51,5 +51,12 @@ Route::get('/lelangku', function () {
     
     return view('lelangku',compact('data'));
 });
+Route::get('/profilku', function () {
+    $data = \App\editProfil::all();
+    
+    return view('profilku',compact('data'));
+});
 
 Route::resource('deskripsi','deskripsi_item');
+ 
+Route::resource('edit_profil','profilEdit');

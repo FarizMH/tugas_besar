@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class Item extends Controller
+use App\editProfil;
+class profilEdit extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class Item extends Controller
      */
     public function index()
     {
-       $data = \App\Item::all();
-        return view('item',compact('data'));
+        $data = editProfil::all();
+        return view('profil_user', compact('data'));
     }
 
     /**
@@ -24,7 +24,7 @@ class Item extends Controller
      */
     public function create()
     {
-        return view('item_create');
+       return view('edit_profil');
     }
 
     /**
@@ -35,18 +35,19 @@ class Item extends Controller
      */
     public function store(Request $request)
     {
-        $data = new \App\Item();
-        $data->name = $request->input('name');
-        $data->open_bid = $request->input('openBid');
-        $data->deskripsi = $request->input('deskripsi');
-        $data->id_user = $request->input('id_user');
+        $data = new \App\editProfil();
+        $data->fullname = $request->input('name');
+        $data->fullname = $request->input('email');
+        $data->fullname = $request->input('fullname');
         $file = $request->file('file');
+        $data->fullname = $request->input('password');
         $ext = $file->getClientOriginalExtension();
         $newName = rand(100000,1001238912).".".$ext;
         $file->move('uploads/file',$newName);
         $data->file = $newName;
+        $data->alamat = $request->input('bidAdress');
         $data->save();
-        return redirect()->route('file.index')->with('alert-success','Data berhasil ditambahkan!');
+        return redirect()->route('edit-profil.index')->with('alert-success','Data berhasil ditambahkan!');
     }
 
     /**
@@ -57,9 +58,9 @@ class Item extends Controller
      */
     public function show($id)
     {
-        $data = Item::where('id',$id)->get();
+        $data = editProfil::where('id',$id)->get();
 
-        return view('lelangku',compact('data'));
+        return view('profilku',compact('data'));
     }
 
     /**
@@ -70,8 +71,8 @@ class Item extends Controller
      */
     public function edit($id)
     {
-        $data = \App\Item::findOrFail($id);
-        return view('edit_lelang',compact('data'));
+        $data = \App\editProfil::findOrFail($id);
+        return view('edit_profil',compact('data'));
     }
 
     /**
@@ -83,28 +84,22 @@ class Item extends Controller
      */
     public function update(Request $request, $id)
     {
-       $data = \App\Item::findOrFail($id);
-        $data->name = $request->input('name');
+        $data = \App\editProfil::findOrFail($id);
+        $data->fullname = $request->input('fullname');
         
-        $data->open_bid = $request->input('openBid');
-        $data->deskripsi = $request->input('deskripsi');
-        $data->id_user = $request->input('idUser');
-        if (empty($request->file('file'))){
-            $data->file = $data->file;
-        }
-        else{
-            unlink('uploads/file/'.$data->file); //menghapus file lama
-            $file = $request->file('file');
-            $ext = $file->getClientOriginalExtension();
-            $newName = rand(100000,1001238912).".".$ext;
-            $file->move('uploads/file',$newName);
-            $data->file = $newName;
-        }
+        $data->alamat_bidder = $request->input('bidAdress');
+        $file = $request->file('file');
+       
+        $ext = $file->getClientOriginalExtension();
+        $newName = rand(100000,1001238912).".".$ext;
+        $file->move('uploads/profil',$newName);
+        $data->file = $newName;
+
+        
        
         $data->save();
-        return redirect()->route('file.index')->with('alert-success','Data berhasil diubah!');
+        return redirect()->route('edit_profil.index')->with('alert-success','Data berhasil diubah!');
     }
-    
 
     /**
      * Remove the specified resource from storage.
@@ -114,8 +109,6 @@ class Item extends Controller
      */
     public function destroy($id)
     {
-        $data = \App\Item::findOrFail($id);
-        $data->delete();
-        return redirect()->route('file.index')->with('alert-success','Data berhasil dihapus!');
+        //
     }
 }

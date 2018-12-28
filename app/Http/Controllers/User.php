@@ -21,6 +21,7 @@ class User extends Controller
     public function login(){
         return view('login');
     }
+
     public function loginPost(Request $request){
         $email = $request->email;
         $password = $request->password;
@@ -60,5 +61,41 @@ class User extends Controller
         $data->password = bcrypt($request->password);
         $data->save();
         return redirect('login_user')->with('alert-success','Kamu berhasil Register');
+    }
+
+    public function edit($id)
+    {
+        $data = \App\Item::findOrFail($id);
+        return view('edit_profil',compact('data'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+       $data = \App\User::findOrFail($id);
+        $data->fullname = $request->input('fullname');
+        
+        $data->alamat = $request->input('bidAdress');
+        $data->deskripsi = $request->input('deskripsi');
+        $data->id_user = $request->input('idUser');
+        if (empty($request->file('file'))){
+            $data->file = $data->file;
+        }
+        else{
+            unlink('uploads/file/'.$data->file); //menghapus file lama
+            $file = $request->file('file');
+            $ext = $file->getClientOriginalExtension();
+            $newName = rand(100000,1001238912).".".$ext;
+            $file->move('uploads/file',$newName);
+            $data->file = $newName;
+        }
+       
+        $data->save();
+        return redirect()->route('edit-profil.index')->with('alert-success','Data berhasil diubah!');
+    }
+
+    public function store(Request $request)
+    {
+        
     }
 }
