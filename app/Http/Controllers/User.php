@@ -13,6 +13,9 @@ class User extends Controller
         if(!Session::get('login')){
             return redirect('login')->with('alert','Kamu harus login dulu');
         }
+        else{
+            return view('index');
+        }
         
     }
     public function login(){

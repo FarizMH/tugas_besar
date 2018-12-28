@@ -22,11 +22,7 @@ Route::get('/profil', function () {
     return view('profil_user',compact('data'));
 });
 
-Route::get('/deskripsi', function () {
-    $data = \App\Item::all();
-    
-    return view('describeItem',compact('data'));
-});
+
 
 Route::get('/about', 'aboutController@about');
 Route::get('/home', 'aboutController@home');
@@ -47,3 +43,13 @@ Route::get('/logout', 'User@logout');
 
 Route::resource('file','Item');
 Route::get('/item_create', 'item_create@item_create');
+
+Route::get('query', 'CariController@search');
+
+Route::get('/lelangku', function () {
+    $data = \App\Item::all();
+    
+    return view('lelangku',compact('data'));
+});
+
+Route::resource('deskripsi','deskripsi_item');

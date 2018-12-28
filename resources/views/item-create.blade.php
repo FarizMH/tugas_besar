@@ -18,8 +18,12 @@
             <form action="{{ route('file.store') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="nama">Nama:</label>
+                    <label for="nama">Judul:</label>
                     <input type="text" class="form-control" id="usr" name="name">
+                </div>
+                 <div class="form-group">
+                    <label for="id_user">ID User:</label>
+                    <input type="text" class="form-control" id="usr" name="id_user">
                 </div>
                 <div class="form-group">
                     <label for="openBid">Open Bid:</label>

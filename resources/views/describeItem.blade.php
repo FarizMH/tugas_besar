@@ -1,54 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  @include('items.head')
-
-  <body>
-  @include('indexUser')
+@include('items.head')
+ @include('indexUser')
+    
+    <body>
 <section class="main-section">
         <!-- Add Your Content Inside -->
         <div class="content">
             <!-- Remove This Before You Start -->
-            <h1>Anak IT -  Table Kontak</h1>
-            @if(Session::has('alert-success'))
-                <div class="alert alert-success">
-                    <strong>{{ \Illuminate\Support\Facades\Session::get('alert-success') }}</strong>
-                </div>
-            @endif
+            <h1>Anak IT -  Edit File</h1>
             <hr>
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Filename</th>
-                    <th>File</th>
-                    <th>Aksi</th>
-                </tr>
-                </thead>
-                <tbody>
-                @php $no = 1; @endphp
-                @foreach($data as $datas)
-                    <tr>
-                        <td>{{ $no++ }}</td>
-                        <td>{{ $datas->name }}</td>
-                        <td><img src="{{ url('uploads/file/'.$datas->file) }}" style="width: 150px; height: 150px;"> </td>
-                        <td>
-                            <form action="{{ route('file.destroy', $datas->id) }}" method="post">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <a href="{{ route('file.edit',$datas->id) }}" class=" btn btn-sm btn-primary">Edit</a>
-                                <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus data?')">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+            <form action="{{ route('deskripsi.update', $data->id) }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                {{ method_field('PUT') }}
+
+                <div class="form-group">
+                    <h4 class="card-title" >Judul: {{ $data->name }}</label>
+                   
+                
+                <div class="form-group">
+                   
+                    <img src="{{ url('uploads/file/'.$data->file) }}" style="width: 150px; height: 150px;">
+                </div>
+                <div class="form-group">
+                    <label for="open_bid" >No  :{{ $data->id }} </label>
+                    <input type="text" class="form-control" id="usr" name="id_item" value="{{ $data->idItem }}" placeholder="No: " >
+                    
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="open_bid">Open Bid:</label>
+                    
+                    <p href="" class="text" >{{ $data->open_bid }}</p>
+                </div>
+                <div class="form-group">
+                    <label for="deskripsi">Deskripsi: {{ $data->deskripsi }}</label>
+                     
+                </div>
+                <div class="form-group">
+                    <label for="id_user"  >ID User: {{Session::get('login')}}</label>
+                    <input type="text" class="form-control" id="usr" name="id_user" value="{{ $data->idUser }}" placeholder="ID User: ">
+                </div>
+                <div class="form-group">
+                    <label for="open_bid">masukkan nilai BID:</label>
+                    <input type="text" class="form-control" id="usr" name="nilaiBid" value="{{ $data->nominal_bid }}">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-md btn-primary">Submit</button>
+                    <button href="{{ route('deskripsi.index', $data->id) }}" type="reset" class="btn btn-md btn-danger">Cancel</button>
+                </div>
+            </form>
         </div>
         <!-- /.content -->
     </section>
-    <!-- /.main-section -->
-</body>
-@include('items.footer')
 
-</html>
+</div>
+
+
+  
+
+
+</body>
+    
+@include('items.footer')
+</html>w

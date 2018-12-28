@@ -6,7 +6,7 @@
   <body>
 
     
-    @include('items.nav')
+    @include('indexUser')
     @include('items.header')
 
     <!-- Main Section -->
@@ -20,11 +20,13 @@
             <h2>* Email kamu : {{Session::get('email')}}</h2>
             <h2>* Status Login : {{Session::get('login')}}</h2>
             <a href="/logout" class="btn btn-primary btn-lg">Logout</a>
-            <a href="/item_create" class="btn btn-primary btn-lg">buat lelang</a>
+            <a href="/item_create" class="btn btn-primary btn-lg">Adakan Lelang</a>
+            <a href="/lelangku" class="btn btn-primary btn-lg">Lelangku</a>
 
         </div>
         <!-- /.content -->
     </section>
     <!-- /.main-section -->
 </body>
+@include('items.footer')
 </html>

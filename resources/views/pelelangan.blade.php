@@ -4,7 +4,6 @@
  @include('indexUser')
     
     @include('items.header')
-    <body>
 <thead>
   <div class="container">
   <div class="row text-center">
@@ -17,11 +16,10 @@
             <img class="card-img-top" src="{{ url('uploads/file/'.$datas->file) }}" alt="">
             <div class="card-body">
               <h4 class="card-title">{{ $datas->name }}</h4>
-              <p class="card-text">{{ $datas->deskripsi }}</p>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
             </div>
             <div class="card-footer">
-              <a href="{{ route('deskripsi.edit',$datas->id) }}" class=" btn btn-sm btn-primary">Find Out More!</a>
-              
+              <a href="#" class="btn btn-primary">Find Out More!</a>
             </div>
            
           </div>
