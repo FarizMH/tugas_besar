@@ -72,26 +72,7 @@ class User extends Controller
 
     public function update(Request $request, $id)
     {
-       $data = \App\User::findOrFail($id);
-        $data->fullname = $request->input('fullname');
-        
-        $data->alamat = $request->input('bidAdress');
-        $data->deskripsi = $request->input('deskripsi');
-        $data->id_user = $request->input('idUser');
-        if (empty($request->file('file'))){
-            $data->file = $data->file;
-        }
-        else{
-            unlink('uploads/file/'.$data->file); //menghapus file lama
-            $file = $request->file('file');
-            $ext = $file->getClientOriginalExtension();
-            $newName = rand(100000,1001238912).".".$ext;
-            $file->move('uploads/file',$newName);
-            $data->file = $newName;
-        }
        
-        $data->save();
-        return redirect()->route('edit-profil.index')->with('alert-success','Data berhasil diubah!');
     }
 
     public function store(Request $request)

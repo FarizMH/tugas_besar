@@ -19,11 +19,11 @@ Route::get('/', function () {
 Route::get('/profil', function () {
     $data = \App\editProfil::all();
     
-    return view('profil_user',compact('file'));
+    return view('profil_user',compact('data'));
 });
 
 
-
+Route::get('/contact', 'aboutController@contact');
 Route::get('/about', 'aboutController@about');
 Route::get('/home', 'aboutController@home');
 Route::get('/index', 'aboutController@home');

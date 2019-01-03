@@ -25,33 +25,31 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Judul</th>
-                    <th>File</th>
-                    <th>Open Bid</th>
-                    <th>Deskripsi</th>
+                    <th>Username</th>
+                    <th>foto</th>
+                    <th>Fuser ID</th>
                 </tr>
                 </thead>
                 <tbody>
                 @php $no = 1; @endphp
                 @foreach($data as $datas)
                     <tr>
-                        <td>{{ $no++ }}</td>
+                        
                         <td>{{ $datas->name }}</td>
                      
                         <td><img src="{{ url('uploads/file/'.$datas->file) }}" style="width: 150px; height: 150px;"> </td>
-                        <td>{{ $datas->open_bid }}</td>
-                        <td>{{ $datas->deskripsi }}</td>
+                        @endforeach
+                        <td>{{ $datas->id }}</td>
                         <td>
                             <form action="{{ route('edit_profil.destroy', $datas->id) }}" method="post">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <a href="{{ route('edit_profil.edit',$datas->id) }}" class=" btn btn-sm btn-primary">Edit</a>
-                                <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus data?')">Delete</button>
+                                <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus akun? data tidak dapat dikembalikan!')">Delete</button>
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                
                 </tbody>
             </table>
         </div>

@@ -28,7 +28,7 @@
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
+              <a href="/login_user" class="btn btn-primary">Find Out More!</a>
             </div>
            
           </div>

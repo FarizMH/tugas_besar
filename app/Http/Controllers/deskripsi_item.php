@@ -47,6 +47,7 @@ class deskripsi_item extends Controller
         return redirect()->route('deskripsi.describeItem')->with('alert-success','Data berhasil ditambahkan!');
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -68,8 +69,13 @@ class deskripsi_item extends Controller
     public function edit($id)
     {
         $data = \App\Item::findOrFail($id);
-        return view('describeItem',compact('data'));
+        $dataBid = \App\pelelangan::all();
+
+        return view('describeItem',compact('data','dataBid'));
+
+
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -80,12 +86,13 @@ class deskripsi_item extends Controller
      */
     public function update(Request $request, $id)
     {
+        
          $datas = new \App\pelelangan();
         $datas->id_item = $request->input('id_item');
         $datas->id_user = $request->input('id_user');
          $datas->nominal_bid = $request->input('nilaiBid');
         $datas->save();
-        return redirect()->route('deskripsi.index')->with('alert-success','Data berhasil ditambahkan!');
+        return redirect()->route('deskripsi.edit',$datas->id_item)->with('alert-success','Data berhasil ditambahkan!');
     }
 
     /**

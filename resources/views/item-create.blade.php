@@ -13,7 +13,7 @@
         <!-- Add Your Content Inside -->
         <div class="content">
             <!-- Remove This Before You Start -->
-            <h1>Anak IT -  Upload File</h1>
+            <h1>Upload Item Lelang</h1>
             <hr>
             <form action="{{ route('file.store') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}

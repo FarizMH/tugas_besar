@@ -17,4 +17,10 @@ class aboutController extends Controller
        $data = \App\Item::all();
         return view('index',compact('data'));
     }
+
+    public function contact()
+    {//menampilkan halaman view di lokasi resources/views/test.blade.php
+       $data = \App\Item::all();
+       return view('contact');
+    }
 }

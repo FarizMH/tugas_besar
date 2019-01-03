@@ -39,18 +39,25 @@
                      
                 </div>
                 <div class="form-group">
-                    <label for="id_user"  >ID User: {{Session::get('login')}}</label>
+                    <label for="id_user"  >ID User: {{Session::get('id')}}</label>
                     <input type="text" class="form-control" id="usr" name="id_user" value="{{ $data->idUser }}" placeholder="ID User: ">
                 </div>
                 <div class="form-group">
                     <label for="open_bid">masukkan nilai BID:</label>
                     <input type="text" class="form-control" id="usr" name="nilaiBid" value="{{ $data->nominal_bid }}">
                 </div>
+                @if($data!=NULL)
                 <div class="form-group">
                     <button type="submit" class="btn btn-md btn-primary">Submit</button>
-                    <button href="{{ route('deskripsi.index', $data->id) }}" type="reset" class="btn btn-md btn-danger">Cancel</button>
+                    @endif
                 </div>
+
+
+                
+
             </form>
+             @include('describeItemShow')
+
         </div>
         <!-- /.content -->
     </section>
@@ -64,4 +71,4 @@
 </body>
     
 @include('items.footer')
-</html>w
+</html>

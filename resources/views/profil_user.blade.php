@@ -45,7 +45,7 @@
               
                {{ csrf_field() }}
               <a href="/lelangku" class="btn btn-primary btn-lg">Lelangku</a>
-              <a href="/profilku" class="btn btn-primary btn-lg">Edit Profil</a>
+              <a href="{{ route('edit_profil.update', $data->id) }}" class="btn btn-primary btn-lg">Edit Profil</a>
             </div>
           </div>
         </div>

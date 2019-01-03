@@ -7,42 +7,52 @@
 
 <body>
  
-@include('items.header')
 
-<thead>
-  <div class="container">
-  <div class="row text-center">
 
-    <p for="usr" > ID User : {{Session::get('name')}}  </p> 
-    @foreach($data as $datas)
-        <div class="col-lg-3 col-md-6 mb-4">
-          
+  
+  
+
+    
+   
+        
+          <form action="#" method="post" enctype="multipart/form-data">
                 
-          <div class="card">
            
            
-            <div class="card-body">
-              <p for="usr" > ID User : {{ $datas->id_user }}  </p> 
-              
-            </div>
-            <div class="card-body">
-                <p for="usr" > {{ $datas->nominal_bid }} </p>
-            </div>
-           
-          </div>
+           <p>jika nominal bid di bawah nominal open bid atau bernilai di bawah nominal bid pertama kali. </p>
+           <p>maka, nominal bid tidak berlaku,</p>
+            
+             
+          
+                 @foreach($dataBid as $datas)
+                   <div class="form-group">
+                    <label for="">ID User : {{Session::get('name')}}</label>
+                    
+                    
+                    </div>
+                        
+            
+              <br for="usr" >Melakukan Bid : {{ $datas->nominal_bid }} </br>
+          
+            
+             <br for="usr" >Total Bid saat ini = {{ $datas->nominal_bid }} </br>
+             <br></br>
+            
+             @endforeach 
+           </form>
 
-        </div>   
- @endforeach 
-</div>
-    </div>
-</thead>
+        
+           
+          
+
+
 </body>
 
 
   
 
 
-</body>
+
     
-@include('items.footer')
-</html>w
+
+</html>

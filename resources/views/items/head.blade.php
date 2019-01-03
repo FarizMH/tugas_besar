@@ -12,5 +12,5 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/css/heroic-features.css') !!}">
-
+    
   </head>

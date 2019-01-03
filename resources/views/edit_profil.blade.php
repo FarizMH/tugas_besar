@@ -18,25 +18,25 @@
             @endif
         <div class="content">
             <!-- Remove This Before You Start -->
-            <h1>Anak IT -  Upload File</h1>
+            <h1>Edit Profilmu!!!</h1>
             <hr>
            <form action="{{ route('edit_profil.update', $data->id) }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
 
                 <div class="form-group">
-                    <label for="nama">Judul:</label>
+                    <label for="nama">Usrename:</label>
                     <input type="text" class="form-control" id="usr" name="name" value="{{ $data->name }}">
                 </div>
                 <div class="form-group">
-                    <label for="nama">Judul:</label>
+                    <label for="nama">Email:</label>
                     <input type="text" class="form-control" id="usr" name="email" value="{{ $data->email }}">
                 </div><div class="form-group">
-                    <label for="nama">Judul:</label>
+                    <label for="nama">Password:</label>
                     <input type="password" class="form-control" id="usr" name="password" value="{{ $data->password }}">
                 </div>
                  <div class="form-group">
-                    <label for="email">File:</label>
+                    <label for="email">Foto:</label>
                     <input type="file" class="form-control" id="email" name="file">
                 </div>
                 <div class="form-group">

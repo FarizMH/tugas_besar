@@ -1,4 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
 
+
+ @include('items.head')
+    
+
+
+  <body>
+     @include('indexUser')
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
@@ -9,3 +18,6 @@
           </div>
         </div>
       </div>
+</body>
+@include('items.footer')
+</html>
